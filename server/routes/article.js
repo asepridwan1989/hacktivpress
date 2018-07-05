@@ -4,6 +4,9 @@ const {addArticle, getListSelf, deleteArticle, getListAll, searchArticle, editAr
 const {auth} = require('../middleware/auth')
 const images = require('../helper/images')
 /* GET users listing. */
+// router.post('/',function(req,res){
+//   console.log('masukkkkk',req.body)
+// })
 router.post('/',
     images.multer.single('image'),
     images.sendUploadToGCS,
