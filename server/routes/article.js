@@ -1,7 +1,8 @@
 var express = require('express');
 var router = express.Router();
 const {addArticle, getListSelf, deleteArticle, getListAll, searchArticle, editArticle, getOneArticle, addComment,addLike} = require('../controllers/article.controller')
-const {auth} = require('../middlewares/auth')
+const {auth} = require('../middleware/auth')
+const images = require('../helper/images')
 /* GET users listing. */
 router  .post('/',
     auth,

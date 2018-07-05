@@ -108,44 +108,4 @@ var self = module.exports = {
         }
       })
     },
-    LoginSteam(req, res, next){
-      let steamID = req.user.steamid
-      let name = req.user.username
-      let email = `${steamID}@steam.com`
-      let password = steamID + name
-      User.findOne({
-          email
-      },(err, dataUser)=>{
-        if(err){
-          res.status(400).json({
-            message:err
-          })
-        }else{
-          if(!dataUser){
-            let user = new User({
-              name, email, password
-            })
-            user.save((err,result)=>{
-              let token = jwt.sign({
-                  id: result._id,
-                  email: result.email
-              }, process.env.TOKENKEY)
-              res.status(200).json({
-                  message: 'successfuly logged in',
-                  token:token,
-                  dataUser:result
-              })
-            })
-          }else {
-            let payload = {
-              body:{
-                email,
-                password
-              }
-            }
-            self.signIn(payload)
-          }
-        }
-      })
-    }
 }

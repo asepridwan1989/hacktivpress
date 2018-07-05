@@ -6,18 +6,16 @@ const logger = require('morgan');
 const cors = require('cors')
 
 const indexRouter = require('./routes/index')
-const usersRouter = require('./routes/user')
+const usersRouter = require('./routes/users')
 const article = require('./routes/article')
 
 const mongoose = require('mongoose')
-const app = express();
-const Promise = require('bluebird')
-const steam = require('./middlewares/steam_auth');
+const app = express()
 require('dotenv').config()
 const userdb = process.env.USERDB
 const passdb = process.env.PASSDB
 
-mongoose.connect(`mongodb://${userdb}:${passdb}@ds217921.mlab.com:17921/portofolioserver`, (err) => {
+mongoose.connect(`mongodb://${userdb}:${passdb}@ds061464.mlab.com:61464/hacktivpress`, (err) => {
   if(err) {
     console.log(`failed to connect database`)
   } else {
