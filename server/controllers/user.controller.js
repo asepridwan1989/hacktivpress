@@ -38,7 +38,7 @@ var self = module.exports = {
     },
 
     signIn: (req, res)=>{
-      console.log(req.body)
+      console.log('bodiiiiiii',req.body)
       let email = req.body.email
       let password = req.body.password
         User.findOne({
